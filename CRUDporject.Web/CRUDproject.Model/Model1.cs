@@ -16,9 +16,6 @@ namespace CRUDproject.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserProfile>()
-                .Property(e => e.Name)
-                .IsUnicode(false);
         }
     }
 }

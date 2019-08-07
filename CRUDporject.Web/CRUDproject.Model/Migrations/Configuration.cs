@@ -9,7 +9,7 @@ namespace CRUDproject.Model.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(CRUDproject.Model.Model1 context)
