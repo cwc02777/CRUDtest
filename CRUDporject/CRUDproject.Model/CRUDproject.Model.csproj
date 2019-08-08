@@ -50,9 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Migrations\201908070511565_ini.cs" />
     <Compile Include="Migrations\201908070511565_ini.Designer.cs">
       <DependentUpon>201908070511565_ini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908080822491_updateforEnum.cs" />
+    <Compile Include="Migrations\201908080822491_updateforEnum.Designer.cs">
+      <DependentUpon>201908080822491_updateforEnum.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
@@ -66,6 +71,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908070511565_ini.resx">
       <DependentUpon>201908070511565_ini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908080822491_updateforEnum.resx">
+      <DependentUpon>201908080822491_updateforEnum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
