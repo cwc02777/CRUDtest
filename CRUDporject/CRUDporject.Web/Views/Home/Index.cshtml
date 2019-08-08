@@ -1,8 +1,138 @@
-﻿@{
+﻿@model IEnumerable<CRUDproject.Model.UserProfile>
+@{
     ViewBag.Title = "Home Page";
 }
-
-
 <div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li><a id="hometab" data-toggle="tab" href="#home">使用者</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="menu1" class="tab-pane fade in active">
+                <input type="button" id="btnAdd" class="btn tf-btn-sm btn-md pull-left" data-target="#add" data-toggle="modal" value="新增">
+                <div class="clearfix"></div>
+                @{
+                    var x = Request.QueryString["page"].AsInt() - 1;
+                    if (x < 0)
+                    {
+                        x = 0;
+                    }
+                }
+                <div class="table-5">
+                    <div>
+                        <div class="table-responsive">
+                            <div class="table-5 table-striped">
+                                <table class="table-5 no-margin">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Birthday)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
+                                        @if (x != Model.Count() / 10)
+                                        {
+                                            for (var y = x * 10; y < 10 * (x + 1); y++)
+                                            {
+                                                <tr>
+                                                    <td><label id='@(Model.ElementAt(y).Id + "Name")'>@Html.DisplayFor(modelItem => Model.ElementAt(y).Name)</label></td>
+                                                    <td><label id='@(Model.ElementAt(y).Id + "Gender")'>@Html.DisplayFor(modelItem => Model.ElementAt(y).Gender)</label></td>
+                                                    <td><label id='@(Model.ElementAt(y).Id + "Birthday")'>@Html.DisplayFor(modelItem => Model.ElementAt(y).Birthday)</label></td>
+                                                    <td>
+                                                        <input type="button" id="@Model.ElementAt(y).Id" class="btn tf-btn-sm" data-target="#edit" data-toggle="modal" value="編輯" />
+                                                        <input type="button" id="@Model.ElementAt(y).Id" class="btn btn-danger" data-target="#delete" data-toggle="modal" value="刪除">
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            for (var h = (x * 10); h < Model.Count(); h++)
+                                            {
+                                                <tr>
+                                                    <td><label id='@(Model.ElementAt(h).Id + "Name")'>@Html.DisplayFor(modelItem => Model.ElementAt(h).Name)</label></td>
+                                                    <td><label id='@(Model.ElementAt(h).Id + "Gender")'>@Html.DisplayFor(modelItem => Model.ElementAt(h).Gender)</label></td>
+                                                    <td><label id='@(Model.ElementAt(h).Id + "Birthday")'>@Html.DisplayFor(modelItem => Model.ElementAt(h).Birthday)</label></td>
+                                                    <td>
+                                                        <input type="button" id="@Model.ElementAt(h).Id" class="btn tf-btn-sm" data-target="#edit" data-toggle="modal" value="編輯" />
+                                                        <input type="button" id="@Model.ElementAt(h).Id" class="btn btn-danger" data-target="#delete" data-toggle="modal" value="刪除">
+                                                    </td>
+                                                </tr>                                      
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="pagination pagination-sm inline pull-right">
+                        @{
+                            var Page = Request.QueryString["page"].AsInt();
+                            if (Page < 1) { Page = 1; }
+                        }
+                        @if (Page > 1)
+                        {
+                            var s1 = Request.Path + "?page=" + (Page - 1);
+
+                            <li><a href="@s1"><<</a></li>
+                        }
+
+
+                        @for (var z = 0; z <= (Model.Count() - 1) / 10; z++)
+                        {
+                            var s2 = Request.Path + "?page=" + (z + 1);
+                            var pa = z + 1;
+                            if (Page == pa)
+                            {
+                                <li><a style="background-color:royalblue;color:white" href="@s2">@pa</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@s2">@pa</a></li>
+                            }
+
+                        }
+                        @if (Page <= (Model.Count() - 1) / 10)
+                        {
+                            var s3 = Request.Path + "?page=" + (Page + 1);
+                            <li><a href="@s3">>></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add Modal -->
+<div id="add" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <div class="form-group">
+                        <label for="addName">姓名</label>
+                        <input type="text" class="form-control" id="ADDtxtName" name="ADDtxtName" placeholder="請輸入姓名" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="addGender">性別</label>
+                        <input type="checkbox" id="ADDtxtGen" name="ADDtxtGen" class="slider" data-on-text="男" data-off-text="女" data-size="mini" required="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBir">生日</label>
+                        <input type="date" class="form-control" id="ADDtxtBir" name="ADDtxtBir" placeholder="請選擇生日" required="" />
+                    </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn tf-btn-sm" id="btnClick" value="add">
+            </div>
+        </div>
+    </div>
 </div>

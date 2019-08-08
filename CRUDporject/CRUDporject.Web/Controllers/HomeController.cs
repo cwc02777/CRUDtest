@@ -14,11 +14,10 @@ namespace CRUDporject.Controllers
         private Model1 db = new Model1();
         public ActionResult Index()
         {
-            return View();
+            return View(db.UserProfile.ToList());
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Sex,Birthday")] UserProfile userProfile)
         {
             if (ModelState.IsValid)
@@ -31,7 +30,6 @@ namespace CRUDporject.Controllers
             return View(userProfile);
         }
 
-        // GET: UserProfiles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -46,11 +44,7 @@ namespace CRUDporject.Controllers
             return View(userProfile);
         }
 
-        // POST: UserProfiles/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Sex,Birthday")] UserProfile userProfile)
         {
             if (ModelState.IsValid)
@@ -62,7 +56,7 @@ namespace CRUDporject.Controllers
             return View(userProfile);
         }
 
-        // GET: UserProfiles/Delete/5
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -77,9 +71,8 @@ namespace CRUDporject.Controllers
             return View(userProfile);
         }
 
-        // POST: UserProfiles/Delete/5
+
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             UserProfile userProfile = db.UserProfile.Find(id);
