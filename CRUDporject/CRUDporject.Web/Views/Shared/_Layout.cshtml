@@ -12,6 +12,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+
                 @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
@@ -22,8 +23,9 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryUI")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/owl.carousel")
+    @Scripts.Render("~/bundles/JS")
     @RenderSection("scripts", required: false)
 </body>
 </html>

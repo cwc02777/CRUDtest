@@ -9,23 +9,25 @@ namespace CRUDporject
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                         "~/Scripts/jquery-ui.js"));
+                        "~/Scripts/jquery.1.11.1.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/owl.carousel").Include(
-                        "~/Scripts/owl.carousel.js"));
-
+            bundles.Add(new ScriptBundle("~/bundles/jqueryUI").Include(
+             "~/Scripts/jquery-ui.js"));
             // 使用開發版本的 Modernizr 進行開發並學習。然後，當您
             // 準備好可進行生產時，請使用 https://modernizr.com 的建置工具，只挑選您需要的測試。
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/modernizr.custom.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-switch.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/JS").Include(
+                       "~/Scripts/SmoothScroll.js",
+                      "~/Scripts/jquery.isotope.js",
+                      "~/Scripts/owl.carousel.js",
+                      "~/Scripts/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -35,7 +37,7 @@ namespace CRUDporject
                       "~/Content/owl.carousel.css",
                       "~/Content/owl.theme.css",
                       "~/Content/style.css",
-                      "~/Content/site.css"));
+                      "~/Content/responsive.css"));
         }
     }
 }

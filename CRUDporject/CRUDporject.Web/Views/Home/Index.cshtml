@@ -9,7 +9,7 @@
         </ul>
         <div class="tab-content">
             <div id="menu1" class="tab-pane fade in active">
-                <input type="button" id="btnAdd" class="btn tf-btn-sm btn-md pull-left" data-target="#add" data-toggle="modal" value="新增">
+                <input type="button" id="btnAdd" class="btn tf-btn-sm btn-md pull-left" data-target="#addUser" data-toggle="modal" value="新增">
                 <div class="clearfix"></div>
                 @{
                     var x = Request.QueryString["page"].AsInt() - 1;
@@ -28,6 +28,7 @@
                                             <th>@Html.DisplayNameFor(model => model.Name)</th>
                                             <th>@Html.DisplayNameFor(model => model.Gender)</th>
                                             <th>@Html.DisplayNameFor(model => model.Birthday)</th>
+                                            <th>操作選項</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,7 +60,7 @@
                                                         <input type="button" id="@Model.ElementAt(h).Id" class="btn tf-btn-sm" data-target="#edit" data-toggle="modal" value="編輯" />
                                                         <input type="button" id="@Model.ElementAt(h).Id" class="btn btn-danger" data-target="#delete" data-toggle="modal" value="刪除">
                                                     </td>
-                                                </tr>                                      
+                                                </tr>
                                             }
                                         }
                                     </tbody>
@@ -106,7 +107,7 @@
     </div>
 </div>
 <!-- add Modal -->
-<div id="add" class="modal fade" role="dialog">
+<div id="addUser" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -121,8 +122,8 @@
                         <input type="text" class="form-control" id="ADDtxtName" name="ADDtxtName" placeholder="請輸入姓名" required="">
                     </div>
                     <div class="form-group">
-                        <label for="addGender">性別</label>
-                        <input type="checkbox" id="ADDtxtGen" name="ADDtxtGen" class="slider" data-on-text="男" data-off-text="女" data-size="mini" required="" />
+                        <label for="addGender">性別</label>&emsp;
+                        <input type="checkbox" id="ADDtxtGen" name="ADDtxtGen" class="slider" data-on-text="男" data-off-text="女" data-size="mini" />
                     </div>
                     <div class="form-group">
                         <label for="txtBir">生日</label>
@@ -131,8 +132,13 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <input type="submit" class="btn tf-btn-sm" id="btnClick" value="add">
+                <input type="submit" class="btn tf-btn-sm" id="btnClick" value="新增">
             </div>
         </div>
     </div>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        $('#ADDtxtGen').bootstrapSwitch({ offColor: 'primary' });
+    </script>
+}
