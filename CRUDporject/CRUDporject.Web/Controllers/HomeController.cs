@@ -26,7 +26,6 @@ namespace CRUDporject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(userProfile);
         }
 
