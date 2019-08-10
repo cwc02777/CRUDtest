@@ -42,8 +42,8 @@
                                                     <td><label id='@(Model.ElementAt(y).Id + "Gender")'>@Html.DisplayFor(modelItem => Model.ElementAt(y).Gender)</label></td>
                                                     <td><label id='@(Model.ElementAt(y).Id + "Birthday")'>@Html.DisplayFor(modelItem => Model.ElementAt(y).Birthday)</label></td>
                                                     <td>
-                                                        <input type="button" id="@Model.ElementAt(y).Id" class="btn tf-btn-sm" data-target="#edit" data-toggle="modal" value="編輯" />
-                                                        <input type="button" id="@Model.ElementAt(y).Id" class="btn btn-danger" data-target="#delete" data-toggle="modal" value="刪除">
+                                                        <input type="button" id="@Model.ElementAt(y).Id" class="btn tf-btn-sm" data-target="#editUser" data-toggle="modal" value="編輯" />
+                                                        <input type="button" id="@Model.ElementAt(y).Id" class="btn btn-danger" data-target="#deleteUser" data-toggle="modal" value="刪除">
                                                     </td>
                                                 </tr>
                                             }
@@ -57,8 +57,8 @@
                                                     <td><label id='@(Model.ElementAt(h).Id + "Gender")'>@Html.DisplayFor(modelItem => Model.ElementAt(h).Gender)</label></td>
                                                     <td><label id='@(Model.ElementAt(h).Id + "Birthday")'>@Html.DisplayFor(modelItem => Model.ElementAt(h).Birthday)</label></td>
                                                     <td>
-                                                        <input type="button" id="@Model.ElementAt(h).Id" class="btn tf-btn-sm" data-target="#edit" data-toggle="modal" value="編輯" />
-                                                        <input type="button" id="@Model.ElementAt(h).Id" class="btn btn-danger" data-target="#delete" data-toggle="modal" value="刪除">
+                                                        <input type="button" id="@Model.ElementAt(h).Id" class="btn tf-btn-sm" data-target="#editUser" data-toggle="modal" value="編輯" />
+                                                        <input type="button" id="@Model.ElementAt(h).Id" class="btn btn-danger" data-target="#deleteUser" data-toggle="modal" value="刪除">
                                                     </td>
                                                 </tr>
                                             }
@@ -116,7 +116,7 @@
                 <h4 class="modal-title">新增</h4>
             </div>
             <div class="modal-body">
-                <form id="chkED" method="post" action="~/Home/Create">
+                <form id="chkAD" method="post" action="~/Home/Create">
                     <p>
                         <div class="form-group">
                             <label for="addName">姓名</label>
@@ -124,25 +124,132 @@
                         </div>
                         <div class="form-group">
                             <label for="addGender">性別</label>&emsp;
-                            <input type="checkbox" id="ADDtxtGen" name="Gender" class="slider" data-on-text="男" data-off-text="女" data-size="mini" />
+                            <input type="checkbox" class="slider" id="ADDtxtGen" data-on-text="男" data-off-text="女" data-size="mini" />
+                            <input type="hidden" class="form-control" id="ADDvalGen" name="Gender">
                         </div>
                         <div class="form-group">
                             <label for="txtBir">生日</label>
                             <input type="date" class="form-control" id="ADDtxtBir" name="Birthday" placeholder="請選擇生日" required="" />
                         </div>
                     </p>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn tf-btn-sm" id="btnClick" value="新增">
-                        </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn tf-btn-sm" id="btnClick" value="新增">
+                    </div>
                 </form>
-         
+
             </div>
-           
+
+        </div>
+    </div>
+</div>
+<!-- Edit Modal -->
+<div id="editUser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">編輯</h4>
+            </div>
+            <div class="modal-body">
+                <form id="chkED" method="post" action="~/Home/Edit">
+                    <p>
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="EDtxtId" name="Id">
+                            <label for="addName">姓名</label>
+                            <input type="text" class="form-control" id="EDtxtName" name="Name" placeholder="請輸入姓名" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="addGender">性別</label>&emsp;
+                            <input type="checkbox" id="EDtxtGen" class="slider" data-on-text="男" data-off-text="女" data-size="mini" />
+                            <input type="hidden" class="form-control" id="EDvalGen" name="Gender">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtBir">生日</label>
+                            <input type="date" class="form-control" id="EDtxtBir" name="Birthday" placeholder="請選擇生日" required="" />
+                        </div>
+                    </p>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn tf-btn-sm" id="btnEDClick" value="確認">
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Delete Modal -->
+<div id="deleteUser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">刪除</h4>
+            </div>
+            <div class="modal-body">
+                <form id="chkDE" method="post" action="~/Home/Delete">
+                    <p>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="DEtxtId" name="id">
+                        </div>
+                        確定要刪除此資料嗎?
+                    </p>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" id="btnDEClick" value="確認">
+                        <input type="button" class="btn " data-dismiss="modal" value="取消">
+                    </div>
+
+                </form>
+
+            </div>
+
         </div>
     </div>
 </div>
 @section Scripts{
     <script type="text/javascript">
         $('#ADDtxtGen').bootstrapSwitch({ offColor: 'primary' });
+        $('#EDtxtGen').bootstrapSwitch({ offColor: 'primary' });
+
+        $('#ADDtxtGen').on('switchChange.bootstrapSwitch', function (e, data) {
+            if (data) {
+                $('#ADDvalGen').val(0)
+            } else {
+                $('#ADDvalGen').val(1)
+            }
+        });
+
+        $('#EDtxtGen').on('switchChange.bootstrapSwitch', function (e, data) {
+            if (data) {
+                $('#EDvalGen').val(0)
+            } else {
+                $('#EDvalGen').val(1)
+            }
+        });
+      
+
+        $('#addUser').on('show.bs.modal', function (event) {
+            $('#ADDtxtGen').bootstrapSwitch('state', false);
+            $('#ADDvalGen').val(1)
+        });
+        $('#editUser').on('show.bs.modal', function (event) {
+            var btnThis = $(event.relatedTarget); 
+            var ID = btnThis[0].id;
+            $('#EDtxtId').val(ID);
+            $('#EDtxtBir').val($('#' + ID + 'Birthday').text());
+              $('#EDtxtGen').bootstrapSwitch('state', true);
+            if ($('#' + ID + 'Gender').text() == "Woman"){
+                $('#EDtxtGen').bootstrapSwitch('state', false);
+            }
+            $('#EDtxtName').val($('#' + ID + 'Name').text());
+        });
+        $('#deleteUser').on('show.bs.modal', function (event) {
+            var btnThis = $(event.relatedTarget);
+            var ID = btnThis[0].id;
+            $('#DEtxtId').val(ID); 
+        });
     </script>
 }

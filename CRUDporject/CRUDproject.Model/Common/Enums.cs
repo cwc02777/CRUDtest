@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +13,10 @@ namespace CRUDproject.Model.Common
         public enum SexStatus
         {
             [Description("男")]
-            Man = 1,
+            Man = 0,
             [Description("女")]
-            Woman = 2
+            Woman = 1
         }
     }
+   
 }

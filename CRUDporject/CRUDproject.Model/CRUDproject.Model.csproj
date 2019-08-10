@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201908080822491_updateforEnum.Designer.cs">
       <DependentUpon>201908080822491_updateforEnum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908081259420_updateBirthdaysetting.cs" />
+    <Compile Include="Migrations\201908081259420_updateBirthdaysetting.Designer.cs">
+      <DependentUpon>201908081259420_updateBirthdaysetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908080822491_updateforEnum.resx">
       <DependentUpon>201908080822491_updateforEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908081259420_updateBirthdaysetting.resx">
+      <DependentUpon>201908081259420_updateBirthdaysetting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

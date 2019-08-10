@@ -18,10 +18,11 @@ namespace CRUDporject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,Name,Sex,Birthday")] UserProfile userProfile)
+        public ActionResult Create([Bind(Include = "Id,Name,Gender,Birthday")] UserProfile userProfile)
         {
             if (ModelState.IsValid)
             {
+                
                 db.UserProfile.Add(userProfile);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -29,22 +30,8 @@ namespace CRUDporject.Controllers
             return View(userProfile);
         }
 
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserProfile userProfile = db.UserProfile.Find(id);
-            if (userProfile == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userProfile);
-        }
-
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Name,Sex,Birthday")] UserProfile userProfile)
+        public ActionResult Edit([Bind(Include = "Id,Name,Gender,Birthday")] UserProfile userProfile)
         {
             if (ModelState.IsValid)
             {
@@ -54,22 +41,6 @@ namespace CRUDporject.Controllers
             }
             return View(userProfile);
         }
-
-
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserProfile userProfile = db.UserProfile.Find(id);
-            if (userProfile == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userProfile);
-        }
-
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

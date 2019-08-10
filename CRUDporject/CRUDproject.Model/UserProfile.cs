@@ -20,7 +20,7 @@ namespace CRUDproject.Model
         public SexStatus Gender { get; set; }
 
         [Display(Name = "¥Í¤é")]
-        [Column(TypeName = "date")]
-        public DateTime? Birthday { get; set; }
+        [StringLength(20)]
+        public string Birthday { get; set; }
     }
 }
