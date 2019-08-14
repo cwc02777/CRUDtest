@@ -158,6 +158,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="123123.txt" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\CRUDporject.dll" />
@@ -318,7 +319,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRUDproject.Model\CRUDproject.Model.csproj">
-      <Project>{157c7ccf-4304-4c71-b71d-be4db388d9e8}</Project>
+      <Project>{61ef9610-d5a5-4d77-97aa-3dce7145eee2}</Project>
       <Name>CRUDproject.Model</Name>
     </ProjectReference>
   </ItemGroup>
